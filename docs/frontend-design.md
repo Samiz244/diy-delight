@@ -1,192 +1,192 @@
-\# 🎨 Frontend Design
+# 🎨 Frontend Design
 
-\#\# Goal
+## Goal
 
 Design the React frontend structure before implementation.
 
 The frontend should support a guided pizza-building experience while keeping state, components, utilities, and API calls clearly separated.
 
-\---
+---
 
-\# React Routes
+# React Routes
 
-\`\`\`text  
-/             → Pizza Builder  
-/pizzas       → Pizza Collection  
-/pizzas/:id   → Pizza Detail  
-\`\`\`
+```text
+/             → Pizza Builder
+/pizzas       → Pizza Collection
+/pizzas/:id   → Pizza Detail
+```
 
-\---
+---
 
-\# Frontend Folder Structure
+# Frontend Folder Structure
 
-\`\`\`text  
-src/  
-├── pages/  
-│   ├── PizzaBuilderPage.jsx  
-│   ├── PizzaCollectionPage.jsx  
-│   └── PizzaDetailPage.jsx  
-│  
-├── components/  
-│   ├── PizzaPreview.jsx  
-│   ├── ProgressTracker.jsx  
-│   ├── PriceDisplay.jsx  
-│   ├── StepSelector.jsx  
-│   ├── CookButton.jsx  
-│   ├── PizzaCard.jsx  
-│   └── EditDrawer.jsx  
-│  
-├── services/  
-│   └── PizzasAPI.js  
-│  
-└── utilities/  
-    ├── calculatePrice.js  
-    └── validatePizza.js  
-\`\`\`
+```text
+src/
+├── pages/
+│   ├── PizzaBuilderPage.jsx
+│   ├── PizzaCollectionPage.jsx
+│   └── PizzaDetailPage.jsx
+│
+├── components/
+│   ├── PizzaPreview.jsx
+│   ├── ProgressTracker.jsx
+│   ├── PriceDisplay.jsx
+│   ├── StepSelector.jsx
+│   ├── CookButton.jsx
+│   ├── PizzaCard.jsx
+│   └── EditDrawer.jsx
+│
+├── services/
+│   └── PizzasAPI.js
+│
+└── utilities/
+    ├── calculatePrice.js
+    └── validatePizza.js
+```
 
-\---
+---
 
-\# State Ownership
+# State Ownership
 
-\`PizzaBuilderPage\` owns the pizza-building state.
+`PizzaBuilderPage` owns the pizza-building state.
 
-\`\`\`js  
-{  
-  name: "",  
-  size: "",  
-  crust: "",  
-  sauce: "",  
-  cheese: "",  
-  topping: ""  
-}  
-\`\`\`
+```js
+{
+  name: "",
+  size: "",
+  crust: "",
+  sauce: "",
+  cheese: "",
+  topping: ""
+}
+```
 
 Reason:
 
-\- Pizza preview needs the pizza state.  
-\- Price display needs the pizza state.  
-\- Progress tracker needs progress state.  
-\- Step selector updates the pizza state.  
-\- Cook button depends on completion state.
+- Pizza preview needs the pizza state.
+- Price display needs the pizza state.
+- Progress tracker needs progress state.
+- Step selector updates the pizza state.
+- Cook button depends on completion state.
 
 State should live in the closest common parent.
 
-\---
+---
 
-\# Builder Page Components
+# Builder Page Components
 
-\`\`\`text  
-PizzaBuilderPage  
-│  
-├── PizzaPreview  
-├── ProgressTracker  
-├── PriceDisplay  
-├── StepSelector  
-└── CookButton  
-\`\`\`
+```text
+PizzaBuilderPage
+│
+├── PizzaPreview
+├── ProgressTracker
+├── PriceDisplay
+├── StepSelector
+└── CookButton
+```
 
-\---
+---
 
-\# PizzaPreview
+# PizzaPreview
 
 Displays the pizza visually.
 
 Reusable with variants:
 
-\`\`\`js  
-variant="large"  
-variant="small"  
-\`\`\`
+```js
+variant="large"
+variant="small"
+```
 
 Used in:
 
-\- Builder page  
-\- Collection cards  
-\- Detail page
+- Builder page
+- Collection cards
+- Detail page
 
 Visual changes:
 
-\- Size changes pizza scale.  
-\- Crust changes border thickness.  
-\- Sauce changes base color.  
-\- Cheese changes cheese layer.  
-\- Topping changes topping appearance.
+- Size changes pizza scale.
+- Crust changes border thickness.
+- Sauce changes base color.
+- Cheese changes cheese layer.
+- Topping changes topping appearance.
 
-\---
+---
 
-\# ProgressTracker
+# ProgressTracker
 
 Displays pizza-building progress:
 
-\`\`\`text  
-🍕 ● ● ● ○ ○ ○  
-\`\`\`
+```text
+🍕 ● ● ● ○ ○ ○
+```
 
 Tracks completed steps.
 
-\---
+---
 
-\# PriceDisplay
+# PriceDisplay
 
 Displays the calculated price.
 
-Does \*\*not\*\* own pricing logic.
+Does **not** own pricing logic.
 
 Receives price from the page.
 
-\---
+---
 
-\# StepSelector
+# StepSelector
 
 Displays the current step options.
 
 Examples:
 
-\- Size  
-\- Crust  
-\- Sauce  
-\- Cheese  
-\- Topping
+- Size
+- Crust
+- Sauce
+- Cheese
+- Topping
 
 Unlocked previous steps remain editable.
 
-\---
+---
 
-\# CookButton
+# CookButton
 
 Appears only after all steps are complete.
 
 Starts the cooking animation and save flow.
 
-\---
+---
 
-\# Collection Page Components
+# Collection Page Components
 
-\`\`\`text  
-PizzaCollectionPage  
-│  
-├── PizzaCard  
-│   └── PizzaPreview variant="small"  
-└── EditDrawer  
-\`\`\`
+```text
+PizzaCollectionPage
+│
+├── PizzaCard
+│   └── PizzaPreview variant="small"
+└── EditDrawer
+```
 
-\---
+---
 
-\# PizzaCard
+# PizzaCard
 
 Displays:
 
-\- Mini pizza preview  
-\- Pizza name  
-\- Pizza choices  
-\- Current calculated price  
-\- View button  
-\- Edit button  
-\- Delete button
+- Mini pizza preview
+- Pizza name
+- Pizza choices
+- Current calculated price
+- View button
+- Edit button
+- Delete button
 
-\---
+---
 
-\# EditDrawer
+# EditDrawer
 
 Slides in from the right.
 
@@ -194,87 +194,88 @@ Uses temporary draft state.
 
 Reason:
 
-\- Save commits changes.  
-\- Cancel discards draft changes.  
-\- Collection state remains stable until save.
+- Save commits changes.
+- Cancel discards draft changes.
+- Collection state remains stable until save.
 
 Editable fields:
 
-\- Name  
-\- Size  
-\- Crust  
-\- Sauce  
-\- Cheese  
-\- Topping
+- Name
+- Size
+- Crust
+- Sauce
+- Cheese
+- Topping
 
-\---
+---
 
-\# Services
+# Services
 
 API calls live in:
 
-\`\`\`text  
-src/services/PizzasAPI.js  
-\`\`\`
+```text
+src/services/PizzasAPI.js
+```
 
 Functions:
 
-\`\`\`js  
-getPizzas()  
-getPizza(id)  
-createPizza(pizza)  
-updatePizza(id, pizza)  
-deletePizza(id)  
-\`\`\`
+```js
+getPizzas()
+getPizza(id)
+createPizza(pizza)
+updatePizza(id, pizza)
+deletePizza(id)
+```
 
-Pages call service functions instead of using raw \`fetch()\` everywhere.
+Pages call service functions instead of using raw `fetch()` everywhere.
 
-\---
+---
 
-\# Utilities
+# Utilities
 
 Utility files hold reusable business logic.
 
-\`\`\`text  
-utilities/  
-├── calculatePrice.js  
-└── validatePizza.js  
-\`\`\`
+```text
+utilities/
+├── calculatePrice.js
+└── validatePizza.js
+```
 
-\#\# calculatePrice.js
+## calculatePrice.js
 
 Responsible for pricing rules.
 
 Used by:
 
-\- Builder page  
-\- Collection page  
-\- Detail page
+- Builder page
+- Collection page
+- Detail page
 
-\#\# validatePizza.js
+## validatePizza.js
 
 Responsible for frontend validation rules.
 
 Current invalid combo:
 
-\`\`\`text  
-Small \+ Stuffed Crust  
-\`\`\`
+```text
+Small + Stuffed Crust
+```
 
 Error:
 
-\`\`\`text  
-Stuffed crust is only available for Medium and Large pizzas.  
-\`\`\`
+```text
+Stuffed crust is only available for Medium and Large pizzas.
+```
 
-\---
+---
 
-\# Frontend Principles
+# Frontend Principles
 
-\- Pages coordinate.  
-\- Components display and collect input.  
-\- Utilities contain reusable logic.  
-\- Services communicate with the backend.  
-\- Shared state lives in the closest common parent.  
-\- Edit forms use draft state until saved.  
-\- Reuse components instead of duplicating logic.  
+- Pages coordinate.
+- Components display and collect input.
+- Utilities contain reusable logic.
+- Services communicate with the backend.
+- Shared state lives in the closest common parent.
+- Edit forms use draft state until saved.
+- Reuse components instead of duplicating logic.
+
