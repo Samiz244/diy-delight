@@ -1,0 +1,164 @@
+/* ── Overlay ─────────────────────────────────────────── */
+
+.edit-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ── Drawer panel ────────────────────────────────────── */
+
+.edit-drawer {
+  width: 380px;
+  max-width: 100%;
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  animation: drawer-slide-in 0.25s ease;
+}
+
+@keyframes drawer-slide-in {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0);    }
+}
+
+/* ── Header ──────────────────────────────────────────── */
+
+.edit-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #e0d5c8;
+}
+
+.edit-drawer-title {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.edit-drawer-close {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: #666;
+  line-height: 1;
+  padding: 0.25rem;
+}
+
+/* ── Scrollable body ─────────────────────────────────── */
+
+.edit-drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── Individual field ────────────────────────────────── */
+
+.edit-field {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.edit-field-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #888;
+}
+
+.edit-name-input {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.edit-name-input:focus {
+  outline: none;
+  border-color: #c8964e;
+}
+
+/* ── Radio option group ──────────────────────────────── */
+
+.edit-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.edit-option {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.edit-option input[type="radio"] {
+  accent-color: #c8964e;
+  cursor: pointer;
+}
+
+/* ── Footer ──────────────────────────────────────────── */
+
+.edit-drawer-footer {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid #e0d5c8;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.edit-validation-message,
+.edit-save-error {
+  font-size: 0.875rem;
+  margin: 0;
+  color: #c0392b;
+}
+
+.edit-footer-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+.edit-cancel-btn {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: transparent;
+  color: #333;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.edit-save-btn {
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #c8964e;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.edit-save-btn:disabled {
+  background-color: #ddd;
+  color: #999;
+  cursor: not-allowed;
+}

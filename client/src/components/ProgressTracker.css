@@ -1,0 +1,35 @@
+.progress-tracker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.progress-pizza {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.progress-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.2s ease, outline-offset 0.2s ease;
+}
+
+.progress-dot--filled {
+  background-color: #c8964e;
+  border: 2px solid #c8964e;
+}
+
+.progress-dot--empty {
+  background-color: transparent;
+  border: 2px solid #c8964e;
+  opacity: 0.35;
+}
+
+/* Ring around the dot the user is currently on */
+.progress-dot--current {
+  outline: 2px solid #c8964e;
+  outline-offset: 2px;
+}

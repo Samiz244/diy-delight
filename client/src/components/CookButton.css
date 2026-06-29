@@ -1,0 +1,16 @@
+.cook-btn {
+  padding: 0.75rem 2rem;
+  background-color: #c8964e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cook-btn:disabled {
+  background-color: #ddd;
+  color: #999;
+  cursor: not-allowed;
+}

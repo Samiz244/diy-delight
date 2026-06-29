@@ -1,0 +1,63 @@
+.collection-page {
+  padding: 2rem;
+}
+
+/* ── Header ──────────────────────────────────────────── */
+
+.collection-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.collection-title {
+  font-size: 1.75rem;
+  margin: 0;
+}
+
+.collection-build-link {
+  padding: 0.5rem 1.25rem;
+  background-color: #c8964e;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* ── States ──────────────────────────────────────────── */
+
+.collection-status {
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+.collection-status--error {
+  color: #c0392b;
+}
+
+.collection-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #666;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.collection-delete-error {
+  color: #c0392b;
+  font-size: 0.875rem;
+  margin: 0 0 1rem;
+}
+
+/* ── Card grid ───────────────────────────────────────── */
+
+.pizza-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
