@@ -1,82 +1,82 @@
-\# 🏗️ Architecture Design
+# 🏗️ Architecture Design
 
-\#\# Goal
+## Goal
 
 Design the application structure before writing any code.
 
-\---
+---
 
-\# Overall Architecture
+# Overall Architecture
 
-\`\`\`text  
-React  
-    ↓  
-Frontend Services  
-    ↓  
-Express Routes  
-    ↓  
-Controllers  
-    ↓  
-PostgreSQL  
-\`\`\`
+```text
+React
+    ↓
+Frontend Services
+    ↓
+Express Routes
+    ↓
+Controllers
+    ↓
+PostgreSQL
+```
 
-\---
+---
 
-\# Frontend Responsibilities
+# Frontend Responsibilities
 
-\- Display pizza preview  
-\- Guide user through pizza creation  
-\- Calculate pizza price  
-\- Display saved pizzas  
-\- Immediate validation of impossible combinations  
-\- Call backend API
+- Display pizza preview
+- Guide user through pizza creation
+- Calculate pizza price
+- Display saved pizzas
+- Immediate validation of impossible combinations
+- Call backend API
 
-\---
+---
 
-\# Backend Responsibilities
+# Backend Responsibilities
 
-\- Store pizzas  
-\- Retrieve pizzas  
-\- Update pizzas  
-\- Delete pizzas  
-\- Validate requests before saving  
-\- Return JSON responses
+- Store pizzas
+- Retrieve pizzas
+- Update pizzas
+- Delete pizzas
+- Validate requests before saving
+- Return JSON responses
 
-\---
+---
 
-\# React Routes
+# React Routes
 
-\#\# Home
+## Home
 
-\`\`\`  
-/  
-\`\`\`
+```
+/
+```
 
 Purpose:
 
 Pizza Builder
 
-\---
+---
 
-\#\# Collection
+## Collection
 
-\`\`\`  
-/pizzas  
-\`\`\`
+```
+/pizzas
+```
 
 Purpose:
 
-\- View saved pizzas  
-\- Edit pizzas  
-\- Delete pizzas
+- View saved pizzas
+- Edit pizzas
+- Delete pizzas
 
-\---
+---
 
-\#\# Details
+## Details
 
-\`\`\`  
-/pizzas/:id  
-\`\`\`
+```
+/pizzas/:id
+```
 
 Purpose:
 
@@ -84,147 +84,147 @@ View one pizza.
 
 Read-only.
 
-\---
+---
 
-\# Builder Components
+# Builder Components
 
-\`\`\`  
-PizzaBuilderPage  
-│  
-├── PizzaPreview  
-├── ProgressTracker  
-├── PriceDisplay  
-├── StepSelector  
-└── CookButton  
-\`\`\`
+```
+PizzaBuilderPage
+│
+├── PizzaPreview
+├── ProgressTracker
+├── PriceDisplay
+├── StepSelector
+└── CookButton
+```
 
-\---
+---
 
-\#\# PizzaPreview
+## PizzaPreview
 
 Displays the pizza visually.
 
 Changes:
 
-\- Size  
-\- Crust  
-\- Sauce  
-\- Cheese  
-\- Topping
+- Size
+- Crust
+- Sauce
+- Cheese
+- Topping
 
-\---
+---
 
-\#\# ProgressTracker
+## ProgressTracker
 
 Displays:
 
-\`\`\`  
-🍕 ● ● ○ ○ ○ ○  
-\`\`\`
+```
+🍕 ● ● ○ ○ ○ ○
+```
 
 Tracks the user's progress.
 
-\---
+---
 
-\#\# PriceDisplay
+## PriceDisplay
 
 Displays the dynamically calculated price.
 
 Price is calculated on the frontend.
 
-\---
+---
 
-\#\# StepSelector
+## StepSelector
 
 Displays the current customization step.
 
 Examples:
 
-\- Size  
-\- Crust  
-\- Sauce  
-\- Cheese  
-\- Topping
+- Size
+- Crust
+- Sauce
+- Cheese
+- Topping
 
 Only unlocked steps are editable.
 
-\---
+---
 
-\#\# CookButton
+## CookButton
 
 Appears only after all customization steps are complete.
 
 Starts the cooking animation.
 
-\---
+---
 
-\# Collection Components
+# Collection Components
 
-\`\`\`  
-PizzaCollectionPage  
-│  
-├── PizzaCard  
-│   └── Mini PizzaPreview  
-├── EditDrawer  
-└── DeleteButton  
-\`\`\`
+```
+PizzaCollectionPage
+│
+├── PizzaCard
+│   └── Mini PizzaPreview
+├── EditDrawer
+└── DeleteButton
+```
 
-\---
+---
 
-\#\# PizzaCard
+## PizzaCard
 
 Displays:
 
-\- Mini pizza preview  
-\- Pizza name  
-\- Pizza choices  
-\- Current calculated price
+- Mini pizza preview
+- Pizza name
+- Pizza choices
+- Current calculated price
 
 Buttons:
 
-\- View  
-\- Edit  
-\- Delete
+- View
+- Edit
+- Delete
 
-\---
+---
 
-\#\# EditDrawer
+## EditDrawer
 
 Slides in from the right.
 
 Allows editing:
 
-\- Name  
-\- Size  
-\- Crust  
-\- Sauce  
-\- Cheese  
-\- Topping
+- Name
+- Size
+- Crust
+- Sauce
+- Cheese
+- Topping
 
 Save updates the database.
 
 Cancel closes the drawer.
 
-\---
+---
 
-\# REST API
+# REST API
 
-\`\`\`  
-GET     /api/pizzas  
+```
+GET     /api/pizzas
 GET     /api/pizzas/:id
 
 POST    /api/pizzas
 
 PUT     /api/pizzas/:id
 
-DELETE  /api/pizzas/:id  
-\`\`\`
+DELETE  /api/pizzas/:id
+```
 
-\---
+---
 
-\# Controller Functions
+# Controller Functions
 
-\`\`\`  
+```
 getPizzas()
 
 getPizzaById()
@@ -233,14 +233,14 @@ createPizza()
 
 updatePizza()
 
-deletePizza()  
-\`\`\`
+deletePizza()
+```
 
-\---
+---
 
-\# Frontend Service Functions
+# Frontend Service Functions
 
-\`\`\`  
+```
 getPizzas()
 
 getPizza(id)
@@ -249,27 +249,27 @@ createPizza()
 
 updatePizza(id, pizza)
 
-deletePizza(id)  
-\`\`\`
+deletePizza(id)
+```
 
-\---
+---
 
-\# Price Calculation
+# Price Calculation
 
 The backend stores:
 
-\- Name  
-\- Size  
-\- Crust  
-\- Sauce  
-\- Cheese  
-\- Topping
+- Name
+- Size
+- Crust
+- Sauce
+- Cheese
+- Topping
 
 The frontend calculates the current price whenever pizzas are displayed.
 
-\---
+---
 
-\# Validation
+# Validation
 
 Frontend:
 
@@ -281,39 +281,40 @@ Final validation before database operations.
 
 Current rule:
 
-\- Vegan Cheese \+ Pepperoni is invalid.
+- Vegan Cheese + Pepperoni is invalid.
 
-\---
+---
 
-\# Success Flow
+# Success Flow
 
-\`\`\`  
-Cook  
-    ↓  
-Cooking Animation  
-    ↓  
-Pizza Ready  
-    ↓  
-Saved to Database  
-    ↓  
-Success Screen  
-\`\`\`
+```
+Cook
+    ↓
+Cooking Animation
+    ↓
+Pizza Ready
+    ↓
+Saved to Database
+    ↓
+Success Screen
+```
 
 Success screen:
 
-\`\`\`  
+```
 🍕
 
 Sam's Volcano
 
 ⭐⭐⭐⭐⭐
 
-Your pizza is ready\!
+Your pizza is ready!
 
-Successfully added to  
+Successfully added to
 your Pizza Collection.
 
-\[ Make Another Pizza \]
+[ Make Another Pizza ]
 
-\[ View Collection \]  
-\`\`\`  
+[ View Collection ]
+```
+
